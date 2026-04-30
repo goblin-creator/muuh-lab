@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUUH LAB - Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0f0f0f; color: white; font-family: 'Poppins', sans-serif; padding: 20px; }
+        .admin-container { max-width: 600px; margin: 50px auto; background: #1a1a1a; padding: 30px; border-radius: 12px; border: 1px solid #333; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #D4AF37; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 12px; background: #111; border: 1px solid #444; color: white; border-radius: 6px; }
+        .checkbox-group { display: flex; gap: 20px; margin-top: 10px; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+        .checkbox-item input { width: auto; }
+        .submit-btn { width: 100%; padding: 15px; background: #D4AF37; color: black; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 20px; }
+        .submit-btn:hover { background: #b8962d; }
+        .back-home { display: block; text-align: center; margin-top: 20px; color: #888; text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <h2 style="font-family: 'Playfair Display', serif; text-align: center; color: #D4AF37; margin-bottom: 30px;">MUUH LAB UPLOAD</h2>
+        
+        <form id="uploadForm">
+            <div class="form-group">
+                <label>Aina ya Kazi</label>
+                <select id="type" required>
+                    <option value="movie">Series / Movie</option>
+                    <option value="short">MUUH Short</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Jina la Kazi (Title)</label>
+                <input type="text" id="title" placeholder="Mfano: MIAMBO ITHEMBA" required>
+            </div>
+
+            <div class="form-group">
+                <label>YouTube Link</label>
+                <input type="text" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." required>
+            </div>
+
+            <div class="form-group">
+                <label>Poster Link (Image URL)</label>
+                <input type="text" id="poster" placeholder="Link ya picha ya cover..." required>
+            </div>
+
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="isRecent" checked>
+                    <span>Ikae kwenye 'VIPYA'</span>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="isTrending">
+                    <span>Ikae kwenye 'TRENDING'</span>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">UPLOAD TO LAB 🔥</button>
+        </form>
+
+        <a href="index.html" class="back-home">← Rudi Home Page</a>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,554 @@
+/* 1. Misingi ya Page */
+:root {
+    --burgundy: #4A0416;
+    --gold: #D4AF37;
+    --dark: #0f0f0f;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+html {
+    scroll-behavior: smooth; /* Inafanya page isogee kinyama */
+}
+.search-box-hero {
+    margin-bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+}
+/* 1. Zoom Effect kwenye Movies & Shorts */
+.series-card, .short-card {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.series-card:hover, .short-card:hover {
+    transform: scale(1.05); /* Inajivuta kidogo kuja mbele */
+    z-index: 10; /* Inakaa juu ya zingine */
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4); /* Kivuli cha dhahabu */
+}
+#loader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #0f0f0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: 0.5s;
+}
+
+.loader-content .muuh-text {
+    font-size: 50px;
+    font-family: 'Playfair Display', serif;
+    color: #D4AF37;
+    letter-spacing: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+.loader-bar {
+    width: 100%;
+    height: 3px;
+    background: #4A0416;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-bar::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%; height: 100%;
+    background: #D4AF37;
+    animation: loading 1.5s infinite;
+}
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(45deg, #4A0416, #D4AF37);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 100;
+    transition: 0.3s;
+}
+:root {
+    --bg-color: #0f0f0f;
+    --text-color: #ffffff;
+    --card-bg: #1a1a1a;
+    --gold: #D4AF37;
+    --burgundy: #4A0416;
+}
+
+/* Hizi ndizo rangi za Nuru (Light Mode) */
+[data-theme="light"] {
+    --bg-color: #f4f4f4;
+    --text-color: #1a1a1a;
+    --card-bg: #ffffff;
+}
+.horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 20px 0;
+    scrollbar-width: none; /* Inaficha scrollbar kwenye Firefox */
+}
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0f0f0f; /* Rangi ya giza */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Inakaa juu ya kila kitu */
+    transition: opacity 0.5s ease-out;
+}
+
+.splash-content {
+    text-align: center;
+}
+
+.splash-logo {
+    font-size: 50px;
+    color: #D4AF37; /* Gold ya MUUH */
+    letter-spacing: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    animation: zoomIn 1s ease-out;
+}
+
+.splash-text {
+    color: white;
+    font-size: 14px;
+    letter-spacing: 3px;
+    opacity: 0.8;
+}
+
+.splash-loader {
+    width: 50px;
+    height: 3px;
+    background: #4A0416; /* Burgundy */
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.splash-loader::after {
+    content: '';
+    width: 20px;
+    height: 100%;
+    background: #D4AF37;
+    position: absolute;
+    animation: loadingLine 1.5s infinite linear;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes loadingLine {
+    0% { left: -20%; }
+    100% { left: 120%; }
+}
+.horizontal-scroll::-webkit-scrollbar {
+    display: none; /* Inaficha scrollbar kwenye Chrome/Safari */
+}
+
+.horizontal-scroll .series-card {
+    min-width: 280px; /* Inazifanya zikae pembeni kwa pembeni */
+}
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+/* Hakikisha kadi zako zinatumia variable ya card-bg */
+.series-card, .short-card {
+    background-color: var(--card-bg) !important;
+}
+.floating-btn:hover {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+/* 2. Shine Effect (Mng'ao) */
+.series-card::after, .short-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-25deg);
+    transition: 0.5s;
+}
+
+.series-card:hover::after, .short-card:hover::after {
+    left: 150%; /* Mng'ao unapita kwa haraka picha ikiguswa */
+}
+
+/* 3. Boresha Button ya "TAZAMA" */
+.series-card button {
+    transition: 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.series-card button:hover {
+    background: #D4AF37; /* Inabadilika kuwa dhahabu */
+    color: #000;
+    letter-spacing: 2px; /* Herufi zinajivuta kidogo */
+    font-weight: 800;
+}
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 15px 15px 15px 45px; /* 45px upande wa kushoto ili kupisha lens */
+    border-radius: 30px;
+    border: 1px solid var(--gold);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+.search-wrapper input:focus {
+    border-color: white;
+    box-shadow: 0 0 15px var(--gold);
+}
+.search-box-hero {
+    margin-bottom: 30px; /* Inatenganisha search bar na neno TURNING */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box-hero input {
+    width: 90%;
+    max-width: 450px;
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: 2px solid var(--gold);
+    background: rgba(0, 0, 0, 0.7); /* Giza la kinyama ili ionekane */
+    color: white;
+    font-size: 16px;
+    outline: none;
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.search-box-hero input:focus {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(74, 4, 22, 0.8); /* Inabadilika kuwa Burgundy ikiguswa */
+    box-shadow: 0 0 20px var(--gold);
+}
+
+.search-box-hero input::placeholder {
+    color: #aaa;
+    font-size: 14px;
+}
+/* Style ya kurekebisha menu links zisipotee */
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 5px 10px;
+}
+
+.nav-links li a:hover {
+    color: var(--gold);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 2. Navigation Bar (Kinyama zaidi) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo .muuh-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.logo .lab-text {
+    font-size: 12px;
+    color: white;
+    display: block;
+    margin-top: -5px;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--gold);
+}
+
+/* 3. Hero Section (Hapa ndio ngoma ilipo) */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(74, 4, 22, 0.6), rgba(15, 15, 15, 1)), 
+                url('https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop'); /* Picha ya mfano */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-btns button {
+    padding: 12px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 15px;
+    transition: 0.3s;
+}
+
+.play-btn {
+    background-color: var(--gold);
+    color: var(--burgundy);
+}
+
+.play-btn:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+.info-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+/* 4. Grid ya Series */
+.container {
+    padding: 40px 5%;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* Movie Card Style */
+.series-card {
+    background: var(--glass);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: 0.4s ease;
+}
+
+.series-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+}
+
+.series-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    border-top: 1px solid #222;
+}
+.shorts-grid {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Inaruhusu kusogeza kwa pembeni (Scroll) */
+    padding: 20px 0;
+    scrollbar-width: none; /* Inaficha scrollbar kwenye Firefox */
+}
+
+.shorts-grid::-webkit-scrollbar {
+    display: none; /* Inaficha scrollbar kwenye Chrome/Safari */
+}
+
+.short-card {
+    min-width: 160px; /* Upana mdogo wa kila short */
+    height: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 1.5px solid var(--gold);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.short-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--gold);
+}
+/* Shorts Grid Layout */
+.shorts-grid {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Inaruhusu scroll ya pembeni */
+    padding: 10px 5px;
+    scrollbar-width: none; /* Inaficha scrollbar Firefox */
+}
+
+.shorts-grid::-webkit-scrollbar {
+    display: none; /* Inaficha scrollbar Chrome/Safari */
+}
+
+.short-card {
+    min-width: 160px; /* Upana wa kadi ya short */
+    height: 280px; /* Urefu wa kadi ya short */
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.short-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+#video-display {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.5s ease; /* Inafanya mabadiliko ya size yawe laini */
+}
+
+#video-display iframe {
+    width: 100%;
+    height: 100%;
+}
+.short-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.short-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+}
+.short-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.short-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    font-size: 12px;
+}
